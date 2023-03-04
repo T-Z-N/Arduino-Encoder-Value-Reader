@@ -65,6 +65,13 @@ void setup()
 {
     Serial.begin(115200);
 
+
+    if (Serial.available()) {
+        byte nr = Serial.read();
+        Serial.print("The following char was received: ");
+        Serial.println(nr, DEC);
+    }
+    
     pinMode(PIN_A, INPUT_PULLUP);
     pinMode(PIN_B, INPUT_PULLUP);
     attachInterrupt(digitalPinToInterrupt(PIN_A), rotary, CHANGE);
